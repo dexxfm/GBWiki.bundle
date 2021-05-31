@@ -83,15 +83,13 @@ class GBWikiAgent(Agent.Movies):
         Log('\nTagline Parsed: {}\n\n'.format(''.join(tagline_html.data)))
         metadata.tagline = ''.join(tagline_html.data)
 
-        sum_html = self.Webparser()
-        sum_html.feed(gb_data['results'][0]['description'])
-        Log('\nSummary List Length: {}\n\n'.format(len(sum_html.data)))
-        Log('\nSummary Parsed: {}\n\n'.format(''.join(sum_html.data)))
-        sum_html.data.remove('Overview')
-        metadata.summary = ''.join(sum_html.data)
-
-        metadata.collections.clear()
-        metadata.collections.add(media.title)
+        if gb_data['results'][0]['description']:
+            sum_html = self.Webparser()
+            sum_html.feed(gb_data['results'][0]['description'])
+            Log('\nSummary List Length: {}\n\n'.format(len(sum_html.data)))
+            Log('\nSummary Parsed: {}\n\n'.format(''.join(sum_html.data)))
+            sum_html.data.remove('Overview')
+            metadata.summary = ''.join(sum_html.data)
 
         metadata.originally_available_at = Datetime.ParseDate(gb_data['results'][0]['original_release_date']).date()
         Log('\nDate: {}\n\n'.format(metadata.originally_available_at))
@@ -108,4 +106,6 @@ class GBWikiAgent(Agent.Movies):
             except:
                 pass
 
+        metadata.collections.clear()
+        metadata.collections.add(media.title)
         # metadata.posters[game_posters] = Proxy.Preview(HTTP.Request(game_posters).content)
