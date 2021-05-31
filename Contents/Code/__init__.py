@@ -88,7 +88,10 @@ class GBWikiAgent(Agent.Movies):
             sum_html.feed(gb_data['results'][0]['description'])
             Log('\nSummary List Length: {}\n\n'.format(len(sum_html.data)))
             Log('\nSummary Parsed: {}\n\n'.format(''.join(sum_html.data)))
-            sum_html.data.remove('Overview')
+            try:
+                sum_html.data.remove('Overview')
+            except:
+                pass
             metadata.summary = ''.join(sum_html.data)
 
         metadata.originally_available_at = Datetime.ParseDate(gb_data['results'][0]['original_release_date']).date()
