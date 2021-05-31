@@ -1,11 +1,9 @@
-TheGamesDB Metadata Agent for Plex
-----------------------------------
+**Giantbomb Wiki Game Video Capture Agent for Plex**
 
-Nothing fancy, just a plugin for [Plex Media Server](https://plex.tv/).
 
-This allows that software to automatically download metadata about video games (roms, executables, whatever) and display that metadata within its own interface. Plex Media Server does not currently (and probably never will) support video games as a valid media type. However, if you just want a way to visually display what video games you do have, this will list them quite nicely with all relevant details.
 
-If you want to use this, it will be necessary to also install a scanner plugin for Plex for it to recognize the rom files. I'll make that available shortly (just as soon as I can clean it up, it's pretty nasty.)
+I looked but could not find anything good that would categorize my game capture footage, so based off "TheGameDB.bundle", I rewrote it to us your personal giantbomb API to pull wiki data and update the video's metadata. It also puts the video in a collection.
 
-That's all I have to say. Now it's time to go be nagged by unexpected indentation error messages.
+Please list any bugs (and fixes if you gott'em). I would love to dig more into how the collections work and make posters and descriptions show up there.
 
+The agent uses your giantbomb API key. You will have to retrieve that yourself. See this link for more information: https://www.giantbomb.com/api/
